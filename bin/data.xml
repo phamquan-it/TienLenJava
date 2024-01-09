@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listWrapper>
+    <cards>
+        <card cid="1">
+            <id>1</id>
+            <image_link>image.jpg</image_link>
+            <name>3 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>2</id>
+            <image_link>image.jpg</image_link>
+            <name>4 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>3</id>
+            <image_link>image.jpg</image_link>
+            <name>5 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>6 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>7 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>8 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>9 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>10 Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>J Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>Q Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>K Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>A Cơ</name>
+        </card>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>2 Cơ</name>
+        </card>
+    </cards>
+    <categories>
+        <category id="1">
+            <name>Cơ</name>
+        </category>
+        <category id="2">
+            <name>Rô</name>
+        </category>
+        <category id="3">
+            <name>Chuồn</name>
+        </category>
+        <category id="4">
+            <name>Bích</name>
+        </category>
+    </categories>
+</listWrapper>

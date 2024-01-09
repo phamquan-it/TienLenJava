@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listWrapper>
+    <cards>
+        <card cid="1">
+            <id>4</id>
+            <image_link>image.jpg</image_link>
+            <name>2 Cơ</name>
+        </card>
+    </cards>
+    <categories>
+        <category id="1">
+            <name>Cơ</name>
+        </category>
+        <category id="2">
+            <name>Rô</name>
+        </category>
+        <category id="3">
+            <name>Chuồn</name>
+        </category>
+        <category id="4">
+            <name>Bích</name>
+        </category>
+    </categories>
+</listWrapper>

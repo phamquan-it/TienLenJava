@@ -1,0 +1,12 @@
+com/javagame/SpringContext.class
+com/javagame/entities/Player.class
+com/javagame/entities/Table.class
+controls/MainControl.class
+com/javagame/repositories/DataRepository.class
+com/javagame/App.class
+controls/AppConfig.class
+com/javagame/entities/Person.class
+controls/Calculator.class
+com/javagame/entities/Category.class
+com/javagame/entities/ListWrapper.class
+com/javagame/entities/Card.class

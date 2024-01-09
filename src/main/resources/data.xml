@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listWrapper>
+    <cards>
+        <card id="1" cid="3">
+            <image_link>PNG-cards-1.3/ace_of_clubs.png</image_link>
+            <name>A Chuồn</name>
+        </card>
+        <card id="2" cid="3">
+            <image_link>PNG-cards-1.3/2_of_clubs.png</image_link>
+            <name>2 Chuồn</name>
+        </card>
+        <card id="3" cid="3">
+            <image_link>PNG-cards-1.3/3_of_clubs.png</image_link>
+            <name>3 Chuồn</name>
+        </card>
+        <card id="4" cid="3">
+            <image_link>PNG-cards-1.3/4_of_clubs.png</image_link>
+            <name>4 Chuồn</name>
+        </card>
+        <card id="5" cid="3">
+            <image_link>PNG-cards-1.3/5_of_clubs.png</image_link>
+            <name>5 Chuồn</name>
+        </card>
+        <card id="6" cid="3">
+            <image_link>PNG-cards-1.3/6_of_clubs.png</image_link>
+            <name>6 Chuồn</name>
+        </card>
+        <card id="7" cid="3">
+            <image_link>PNG-cards-1.3/7_of_clubs.png</image_link>
+            <name>7 Chuồn</name>
+        </card>
+        <card id="8" cid="3">
+            <image_link>PNG-cards-1.3/8_of_clubs.png</image_link>
+            <name>8 Chuồn</name>
+        </card>
+        <card id="9" cid="3">
+            <image_link>PNG-cards-1.3/9_of_clubs.png</image_link>
+            <name>9 Chuồn</name>
+        </card>
+        <card id="10" cid="3">
+            <image_link>PNG-cards-1.3/10_of_clubs.png</image_link>
+            <name>10 Chuồn</name>
+        </card>
+        <card id="11" cid="3">
+            <image_link>PNG-cards-1.3/jack_of_clubs2.png</image_link>
+            <name>J Chuồn</name>
+        </card>
+        <card id="12" cid="3">
+            <image_link>PNG-cards-1.3/queen_of_clubs2.png</image_link>
+            <name>Q Chuồn</name>
+        </card>
+        <card id="13" cid="3">
+            <image_link>PNG-cards-1.3/king_of_clubs2.png</image_link>
+            <name>K Chuồn</name>
+        </card>
+    </cards>
+    <categories>
+        <category id="1">
+            <name>Cơ</name>
+        </category>
+        <category id="2">
+            <name>Rô</name>
+        </category>
+        <category id="3">
+            <name>Chuồn</name>
+        </category>
+        <category id="4">
+            <name>Bích</name>
+        </category>
+    </categories>
+</listWrapper>
