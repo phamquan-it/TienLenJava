@@ -26,7 +26,6 @@ public interface StartDesign {
 	default void aboutGame() {
 		System.out.println("About game");
 	}
-	void addPlayer(Player player);
 	void startGame(Stage primaryStage);
 	
 }

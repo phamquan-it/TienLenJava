@@ -8,9 +8,16 @@ public class Player {
 		this.id = id;
 		this.name = name;
 	}
+	public Player(int id, String name, List<Card> list) {
+		this.id = id;
+		this.name = name;
+		listCards =  list;
+	}
 	private int id;
 	private String name;
 	private double monney;
+	private boolean turn;
+	private boolean isNextSession;
 	public double getMonney() {
 		return monney;
 	}
@@ -33,8 +40,8 @@ public class Player {
 	public List<Card> getListCards() {
 		return listCards;
 	}
-	public void setListCards(List<Card> listCards) {
-		this.listCards = listCards;
+	public void setListCards(List<Card> cards) {
+		this.listCards = cards;
 	}
 	@Override
 	public String toString() {

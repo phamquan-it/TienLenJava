@@ -46,15 +46,11 @@ public class StartGUI implements SpringContext{
 			mainControl.exitApplication();
 		});
 		VBox vBox = new VBox(10);
-		vBox.getChildren().addAll(play, _continue, help, about, exit);
+		vBox.getChildren().addAll(play,_continue,help,about,exit);
 		group.getChildren().add(vBox);
 		root.setCenter(group);
 		Scene scene = new Scene(root, 800, 600, Color.GRAY);
-		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("house.png");
-	    Image image = new Image(inputStream);
-	    primaryStage.setTitle("Tien len");
-	    primaryStage.getIcons().add(image);
+	    primaryStage.setTitle("NA88");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <listWrapper>
     <cards>
-        <card id="1" cid="3">
+        <card id="14" cid="3">
             <image_link>PNG-cards-1.3/ace_of_clubs.png</image_link>
             <name>A Chuồn</name>
         </card>
-        <card id="2" cid="3">
+        <card id="15" cid="3">
             <image_link>PNG-cards-1.3/2_of_clubs.png</image_link>
             <name>2 Chuồn</name>
         </card>
@@ -52,6 +52,162 @@
         <card id="13" cid="3">
             <image_link>PNG-cards-1.3/king_of_clubs2.png</image_link>
             <name>K Chuồn</name>
+        </card>
+        <card id="14" cid="1">
+            <image_link>PNG-cards-1.3/ace_of_hearts.png</image_link>
+            <name>A Cơ</name>
+        </card>
+        <card id="15" cid="1">
+            <image_link>PNG-cards-1.3/2_of_hearts.png</image_link>
+            <name>2 Cơ</name>
+        </card>
+        <card id="3" cid="1">
+            <image_link>PNG-cards-1.3/3_of_hearts.png</image_link>
+            <name>3 Cơ</name>
+        </card>
+        <card id="4" cid="1">
+            <image_link>PNG-cards-1.3/4_of_hearts.png</image_link>
+            <name>4 Cơ</name>
+        </card>
+        <card id="5" cid="1">
+            <image_link>PNG-cards-1.3/5_of_hearts.png</image_link>
+            <name>5 Cơ</name>
+        </card>
+        <card id="6" cid="1">
+            <image_link>PNG-cards-1.3/6_of_hearts.png</image_link>
+            <name>6 Cơ</name>
+        </card>
+        <card id="7" cid="1">
+            <image_link>PNG-cards-1.3/7_of_hearts.png</image_link>
+            <name>7 Cơ</name>
+        </card>
+        <card id="8" cid="1">
+            <image_link>PNG-cards-1.3/8_of_hearts.png</image_link>
+            <name>8 Cơ</name>
+        </card>
+        <card id="9" cid="1">
+            <image_link>PNG-cards-1.3/9_of_hearts.png</image_link>
+            <name>9 Cơ</name>
+        </card>
+        <card id="10" cid="1">
+            <image_link>PNG-cards-1.3/10_of_hearts.png</image_link>
+            <name>10 Cơ</name>
+        </card>
+        <card id="11" cid="1">
+            <image_link>PNG-cards-1.3/jack_of_hearts2.png</image_link>
+            <name>J Cơ</name>
+        </card>
+        <card id="12" cid="1">
+            <image_link>PNG-cards-1.3/queen_of_hearts2.png</image_link>
+            <name>Q Cơ</name>
+        </card>
+        <card id="13" cid="1">
+            <image_link>PNG-cards-1.3/king_of_hearts2.png</image_link>
+            <name>K Cơ</name>
+        </card>
+        <card id="14" cid="2">
+            <image_link>PNG-cards-1.3/ace_of_diamonds.png</image_link>
+            <name>A Rô</name>
+        </card>
+        <card id="15" cid="2">
+            <image_link>PNG-cards-1.3/2_of_diamonds.png</image_link>
+            <name>2 Rô</name>
+        </card>
+        <card id="3" cid="2">
+            <image_link>PNG-cards-1.3/3_of_diamonds.png</image_link>
+            <name>3 Rô</name>
+        </card>
+        <card id="4" cid="2">
+            <image_link>PNG-cards-1.3/4_of_diamonds.png</image_link>
+            <name>4 Rô</name>
+        </card>
+        <card id="5" cid="2">
+            <image_link>PNG-cards-1.3/5_of_diamonds.png</image_link>
+            <name>5 Rô</name>
+        </card>
+        <card id="6" cid="2">
+            <image_link>PNG-cards-1.3/6_of_diamonds.png</image_link>
+            <name>6 Rô</name>
+        </card>
+        <card id="7" cid="2">
+            <image_link>PNG-cards-1.3/7_of_diamonds.png</image_link>
+            <name>7 Rô</name>
+        </card>
+        <card id="8" cid="2">
+            <image_link>PNG-cards-1.3/8_of_diamonds.png</image_link>
+            <name>8 Rô</name>
+        </card>
+        <card id="9" cid="2">
+            <image_link>PNG-cards-1.3/9_of_diamonds.png</image_link>
+            <name>9 Rô</name>
+        </card>
+        <card id="10" cid="2">
+            <image_link>PNG-cards-1.3/10_of_diamonds.png</image_link>
+            <name>10 Rô</name>
+        </card>
+        <card id="11" cid="2">
+            <image_link>PNG-cards-1.3/jack_of_diamonds2.png</image_link>
+            <name>J Rô</name>
+        </card>
+        <card id="12" cid="2">
+            <image_link>PNG-cards-1.3/queen_of_diamonds2.png</image_link>
+            <name>Q Rô</name>
+        </card>
+        <card id="13" cid="2">
+            <image_link>PNG-cards-1.3/king_of_diamonds2.png</image_link>
+            <name>K Rô</name>
+        </card>
+        <card id="14" cid="4">
+            <image_link>PNG-cards-1.3/ace_of_spades.png</image_link>
+            <name>A Bích</name>
+        </card>
+        <card id="15" cid="4">
+            <image_link>PNG-cards-1.3/2_of_spades.png</image_link>
+            <name>2 Bích</name>
+        </card>
+        <card id="3" cid="4">
+            <image_link>PNG-cards-1.3/3_of_spades.png</image_link>
+            <name>3 Bích</name>
+        </card>
+        <card id="4" cid="4">
+            <image_link>PNG-cards-1.3/4_of_spades.png</image_link>
+            <name>4 Bích</name>
+        </card>
+        <card id="5" cid="4">
+            <image_link>PNG-cards-1.3/5_of_spades.png</image_link>
+            <name>5 Bích</name>
+        </card>
+        <card id="6" cid="4">
+            <image_link>PNG-cards-1.3/6_of_spades.png</image_link>
+            <name>6 Bích</name>
+        </card>
+        <card id="7" cid="4">
+            <image_link>PNG-cards-1.3/7_of_spades.png</image_link>
+            <name>7 Bích</name>
+        </card>
+        <card id="8" cid="4">
+            <image_link>PNG-cards-1.3/8_of_spades.png</image_link>
+            <name>8 Bích</name>
+        </card>
+        <card id="9" cid="4">
+            <image_link>PNG-cards-1.3/9_of_spades.png</image_link>
+            <name>9 Bích</name>
+        </card>
+        <card id="10" cid="4">
+            <image_link>PNG-cards-1.3/10_of_spades.png</image_link>
+            <name>10 Bích</name>
+        </card>
+        <card id="11" cid="4">
+            <image_link>PNG-cards-1.3/jack_of_spades2.png</image_link>
+            <name>J Bích</name>
+        </card>
+        <card id="12" cid="4">
+            <image_link>PNG-cards-1.3/queen_of_spades2.png</image_link>
+            <name>Q Bích</name>
+        </card>
+        <card id="13" cid="4">
+            <image_link>PNG-cards-1.3/king_of_spades2.png</image_link>
+            <name>K Bích</name>
         </card>
     </cards>
     <categories>

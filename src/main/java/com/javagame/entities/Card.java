@@ -4,7 +4,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "card")
-public class Card {
+public class Card implements Comparable<Card>{
     private int categoryid;
     private int id;
     private String name;
@@ -48,6 +48,16 @@ public class Card {
 	public void setImage_link(String image_link) {
 		this.image_link = image_link;
 	}
+	@Override
+	public int compareTo(Card other) {
+		// TODO Auto-generated method stub
+		int compareId = Integer.compare(this.getId(), other.getId());
+		if(compareId == 0) {
+			return Integer.compare(this.getCategoryid(), other.getCategoryid());
+		}
+		return compareId;
+	}
+	
     
 }
 
