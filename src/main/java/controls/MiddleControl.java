@@ -1,127 +1,133 @@
 package controls;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
+import com.javagame.SpringContext;
+import com.javagame.GUI.ListCardsChoose;
+import com.javagame.GUI.TableGame;
 import com.javagame.entities.Card;
 import com.javagame.entities.Player;
+import com.javagame.repositories.DataRepository;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
-@Component
-public class MiddleControl {
-	public int deathTime = 30;
-	private Thread thread;
-	private List<Player> listPlayers;
-	private List<Player> session;
-	private int turn;
-	public void initTableControl(List<Player> players) {
-		
-		turn = 0;
-		session = new ArrayList<>();
-		listPlayers = players;
-		setFirstTurn();
-		countDownDeathTime(this);
-	}
-	public List<Player> getListPlayers() {
-		return listPlayers;
-	}
-	public void setListPlayers(List<Player> listPlayers) {
-		this.listPlayers = listPlayers;
-	}
-	public void makeNewSession() {
-		session.clear();
-		session.addAll(listPlayers);
-	}
-	public void nextTurn() {
-		resetDeathTime(30);
-		for (int i = 0; i < session.size(); i++) {
-            if (session.get(i).getId() == turn) {
-                if (i == session.size() - 1) {
-                    turn = session.getFirst().getId();
-                    return;
-                } else if(session.size()!=1){
-                    turn = session.get(i + 1).getId();
-                    return;
-                }
-            }
-        }
-	}
-	public void outSession(Player playerOut) {
-		if(playerOut == null) return;
-		for (int i = 0; i < session.size(); i++) {
-			if(session.get(i).getId() == playerOut.getId()) {
-				if(playerOut.getId() == turn) nextTurn();
-				session.remove(i);	
+public class MiddleControl implements SpringContext {
+	public volatile TableGame tableGame;
+	public volatile ListCardsChoose listCardsChoose;
+	public volatile List<Player> listPlayers;
+	public volatile List<Player> session;
+	public volatile int turn = 0;
+	public volatile int deathTime = 30;
+	public volatile List<Card> currentListCard;
+
+	public synchronized void showTablePlayer(Stage primaryStage) {
+		currentListCard = new ArrayList<Card>();
+		listCardsChoose = new ListCardsChoose(new DataRepository().getAllCards().subList(0, 13));
+		listCardsChoose.pushCard.setOnAction((e) -> {
+			if (lookUpData.getCardType(listCardsChoose.cardsChoose) != -1) {
+				setCurentListCard(listCardsChoose.cardsChoose);
+				tableGame.setListCardCenter(getCurrentListCard());
+
+				listCardsChoose.listCard.removeAll(listCardsChoose.cardsChoose);
+				listCardsChoose.cardsChoose.clear();
+				listCardsChoose.updateCardChoose();
+			}else {
+				System.out.println("Không hợp lệ bé ơi");
 			}
-		}
+		});
+		listPlayers = new ArrayList<Player>();
+		listPlayers.add(new Player(1, "player1"));
+		listPlayers.add(new Player(2, "player2"));
+		Thread showTablePlayerThread = new Thread(() -> {
+			tableGame = new TableGame(listCardsChoose);
+			tableGame.skip.setOnAction((e) -> {
+				turn++;
+				// getTurn();
+//            	listPlayers.add(new  Player(3, "player3"));
+//            	showListPlayersSize();
+				tableGame.setListCardCenter(new DataRepository().getAllCards().subList(0, 12));
+			});
+
+			Scene scene = new Scene(tableGame, 800, 600);
+
+			Platform.runLater(() -> {
+				primaryStage.setScene(scene);
+				primaryStage.show();
+			});
+			countDowndDeatime();
+			Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
+				tableGame.setTextTop(getDeathTime());
+			}));
+			timeline.setCycleCount(Timeline.INDEFINITE);
+			timeline.play();
+		});
+		showTablePlayerThread.start();
 	}
-	public int getTurn() {
-		return turn;
-	}
-	public void setTurn(int turn) {
-		this.turn = turn;
-	}
-	public List<Player> getSession(){
-		return session;
-	}
-	public void setFirstTurn() {
-		for (Player player : session) {
-			for (Card card : player.getListCards()) {
-				if(card.getId()==3 && card.getCategoryid() == 3) {
-					setTurn(player.getId());
-					return;
-				}
-			}
-		}
-		setTurn(listPlayers.getFirst().getId());
-	}
-	public void countDownDeathTime(MiddleControl middleControl) {
-		thread = new Thread(()->{
-			
-			while (true) {
+
+	public synchronized void countDowndDeatime() {
+		Thread coundDowndTime = new Thread(() -> {
+			while (deathTime > 0) {
 				try {
-					if(deathTime == 0) {
-						Platform.runLater(()->{
-//							for (Player ses : session) {
-//								if(ses.getId() != turn)
-//									this.outSession(ses);
-//							}
-//							System.out.println("sizeSession:"+session.size());
-						});
-						nextTurn();
-						System.out.println(turn);
-					}
-				//	System.out.println("Time:"+deathTime);
+					deathTime--;
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					System.out.println("Cowndown. Exiting...");
-		            break;
+					e.printStackTrace();
 				}
-				deathTime--;
 			}
+			resetDeathTime();
 		});
-		thread.start();
+		coundDowndTime.start();
 	}
-	public void resetDeathTime(int newDeathTime) {
-	    synchronized (this) {
-	        deathTime = newDeathTime;
-	    }
+
+	public synchronized void setDeathTime() {
+		deathTime = 0;
 	}
-	public int getDeathTime() {
+
+	public synchronized void resetDeathTime() {
+		deathTime = 30;
+	}
+
+	public synchronized int getDeathTime() {
 		return deathTime;
 	}
-	public void cowndownInterrupt() {
-		thread.interrupt();
+
+	public List<List<Card>> device() {
+		List<Card> lst = new ArrayList<>(new DataRepository().getAllCards());
+		Collections.shuffle(lst); // Shuffle the list
+
+		List<List<Card>> result = new ArrayList();
+		int size = lst.size() / 4; // Split the shuffled list into four parts
+
+		for (int i = 0; i < 3; i++) {
+			result.add(lst.subList(i * size, (i + 1) * size));
+		}
+		// Add the remaining cards to the last sublist
+		result.add(lst.subList(3 * size, lst.size()));
+
+		return result;
 	}
-	public void size() {
-		System.out.println(session.size());
+
+	public void getTurn() {
+		System.out.println(turn);
 	}
-	public void setSession(List<Player> session) {
-		this.session = session;
+
+	public void showListPlayersSize() {
+		System.out.println(listPlayers.size());
 	}
-	
+
+	public synchronized void setCurentListCard(List<Card> cardListInput) {
+		currentListCard = cardListInput;
+	}
+
+	public List<Card> getCurrentListCard() {
+		return currentListCard;
+	}
 }

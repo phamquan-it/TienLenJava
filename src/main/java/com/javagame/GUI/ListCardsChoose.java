@@ -15,32 +15,33 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 public class ListCardsChoose extends BorderPane implements SpringContext{
-	private List<Card> listCard;
-	private List<Card> cardsChoose;
-	public ListCardsChoose(Player player,TableGUI  tableGUI) {
+	public List<Card> listCard;
+	public List<Card> cardsChoose;
+	public Button pushCard;
+	public ListCardsChoose(List<Card>  listCardPlayer) {
 		cardsChoose  = new ArrayList<>();
 		//listCard = player.getListCards();
-		listCard = new DataRepository().getAllCards();
+		listCard = listCardPlayer;
 		updateCardChoose();
 		// TODO Auto-generated constructor stub
-		Button button = new Button("Quất");
-		button.setOnAction(event->{
-			if(cardsChoose.size()!=0) {
-				System.out.println(
-						cardDataSupport
-						.getNameCardType(lookUpData.getCardType(cardsChoose)));
-				if(lookUpData.getCardType(cardsChoose) != -1 &&
-						tableGUI.setCurrentCard(cardsChoose,player)) {
-
-					listCard.removeAll(cardsChoose);
-					cardsChoose.clear();
-					updateCardChoose();
-					tableGUI.listPlayers.getFirst().setListCards(listCard);
-				}
-			}
-		});
+		pushCard = new Button("Quất");
+//		button.setOnAction(event->{
+//			if(cardsChoose.size()!=0) {
+//				System.out.println(
+//						cardDataSupport
+//						.getNameCardType(lookUpData.getCardType(cardsChoose)));
+//				if(lookUpData.getCardType(cardsChoose) != -1 &&
+//						tableGUI.setCurrentCard(cardsChoose,player)) {
+//
+//					listCard.removeAll(cardsChoose);
+//					cardsChoose.clear();
+//					updateCardChoose();
+//					tableGUI.listPlayers.getFirst().setListCards(listCard);
+//				}
+//			}
+//		});
 		setMaxHeight(300);
-		setBottom(button);
+		setBottom(pushCard);
 	}
 	public void updateCardChoose() {
 		Group group = new Group();

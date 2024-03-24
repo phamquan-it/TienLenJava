@@ -27,26 +27,10 @@ public class StartGUI implements SpringContext{
 		Group group = new Group();
 		Button play = new Button("Play");
 		play.setOnAction(event ->{
-			mainControl.startGame(primaryStage);
-		});
-		Button _continue = new Button("Continue");
-		_continue.setOnAction(event ->{
-			mainControl.continueGame();
-		});
-		Button help = new Button("Help");
-		help.setOnAction(event ->{
-			mainControl.helpGame();
-		});
-		Button about = new Button("About");
-		about.setOnAction(event ->{
-			mainControl.aboutGame();
-		});
-		Button exit = new Button("Exit");
-		exit.setOnAction(event ->{
-			mainControl.exitApplication();
+			
 		});
 		VBox vBox = new VBox(10);
-		vBox.getChildren().addAll(play,_continue,help,about,exit);
+		vBox.getChildren().addAll(play);
 		group.getChildren().add(vBox);
 		root.setCenter(group);
 		Scene scene = new Scene(root, 800, 600, Color.GRAY);
