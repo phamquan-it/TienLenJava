@@ -2,6 +2,7 @@ package controls;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import com.javagame.SpringContext;
@@ -19,15 +20,24 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MiddleControl implements SpringContext {
+	public MiddleControl() {
+		listPlayers = new ArrayList<Player>();
+		listPlayers.add(new Player(1, "player1"));
+		listPlayers.add(new Player(2, "player2"));
+		listPlayers.add(new Player(3, "player3"));
+		listPlayers.add(new Player(4, "player4"));
+		setSession(listPlayers);
+	}
 	public volatile TableGame tableGame;
 	public volatile ListCardsChoose listCardsChoose;
 	public volatile List<Player> listPlayers;
 	public volatile List<Player> session;
-	public volatile int turn = 0;
+	public volatile int turn = 1;
 	public volatile int deathTime = 30;
 	public volatile List<Card> currentListCard;
 
 	public synchronized void showTablePlayer(Stage primaryStage) {
+		
 		currentListCard = new ArrayList<Card>();
 		listCardsChoose = new ListCardsChoose(new DataRepository().getAllCards().subList(0, 13));
 		listCardsChoose.pushCard.setOnAction((e) -> {
@@ -42,17 +52,15 @@ public class MiddleControl implements SpringContext {
 				System.out.println("Không hợp lệ bé ơi");
 			}
 		});
-		listPlayers = new ArrayList<Player>();
-		listPlayers.add(new Player(1, "player1"));
-		listPlayers.add(new Player(2, "player2"));
+
 		Thread showTablePlayerThread = new Thread(() -> {
 			tableGame = new TableGame(listCardsChoose);
 			tableGame.skip.setOnAction((e) -> {
-				turn++;
+				
 				// getTurn();
 //            	listPlayers.add(new  Player(3, "player3"));
 //            	showListPlayersSize();
-				tableGame.setListCardCenter(new DataRepository().getAllCards().subList(0, 12));
+				System.out.println(session);
 			});
 
 			Scene scene = new Scene(tableGame, 800, 600);
@@ -82,6 +90,7 @@ public class MiddleControl implements SpringContext {
 					e.printStackTrace();
 				}
 			}
+			outSession(turn);
 			resetDeathTime();
 		});
 		coundDowndTime.start();
@@ -115,8 +124,11 @@ public class MiddleControl implements SpringContext {
 		return result;
 	}
 
-	public void getTurn() {
-		System.out.println(turn);
+	public int getTurn() {
+		return turn;
+	}
+	public synchronized void setTurn(int turnPlayer) {
+		turn = turnPlayer;
 	}
 
 	public void showListPlayersSize() {
@@ -129,5 +141,38 @@ public class MiddleControl implements SpringContext {
 
 	public List<Card> getCurrentListCard() {
 		return currentListCard;
+	}
+	//next turn
+	public synchronized void nextTurn() {
+		
+		Iterator<Player> iterator = session.iterator();
+		while (iterator.hasNext()) {
+			Player player = iterator.next();
+			if (player.getId()== getTurn() && iterator.hasNext()) {
+				setTurn(iterator.next().getId());
+			}else {
+				setTurn(session.getFirst().getId());
+			}
+		}
+		if (session.size()==1) {
+			setSession(listPlayers);
+		}
+		System.out.println("Lượt:"+getTurn());
+		System.out.println("Số người chơi còn  lại:"+session.size());
+		countDowndDeatime();
+	}
+	public synchronized void outSession(int playerId) {
+		for(int i =0; i< session.size();i++) {
+			if(session.get(i).getId() == playerId && session.size()>1) {
+				session.remove(session.remove(i));
+				break;
+			}
+		}
+		nextTurn();
+		
+	}
+	public synchronized void setSession(List<Player> listPlayer) {
+		session = new ArrayList<Player>();
+		session.addAll(listPlayer);
 	}
 }
