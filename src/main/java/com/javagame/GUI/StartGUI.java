@@ -41,7 +41,7 @@ public class StartGUI implements SpringContext {
 		BorderPane.setAlignment(title, javafx.geometry.Pos.CENTER);
 		root.setTop(titlePane);
 
-		Button play = new Button("Play");
+		Button play = new Button("Chơi thôi");
 		play.setPrefWidth(180);
 		play.setOnAction(event -> {
 			MiddleControl control = new MiddleControl();
@@ -49,7 +49,7 @@ public class StartGUI implements SpringContext {
 			control.showTablePlayer(primaryStage, () -> start(primaryStage));
 		});
 
-		Button _continue = new Button("Continue");
+		Button _continue = new Button("Tiếp tục");
 		_continue.setPrefWidth(180);
 		_continue.setOnAction(event -> new Alert(Alert.AlertType.INFORMATION,
 				"Chưa có ván nào được lưu.").showAndWait());
@@ -61,13 +61,13 @@ public class StartGUI implements SpringContext {
 						+ "3 bích đi trước. Đánh bộ nhỏ hơn thì mất lượt.\n"
 						+ "Hết bài trước là thắng.").showAndWait());
 
-		Button about = new Button("About");
+		Button about = new Button("Về tôi");
 		about.setPrefWidth(180);
 		about.setOnAction(event -> new Alert(Alert.AlertType.INFORMATION,
-				"NA88 — Tiến Lên\nDự án Java/JavaFX cũ được nối lại luật chơi và AI.")
+				"NA88 — Tiến Lên\nDự án Java/JavaFX")
 						.showAndWait());
 
-		Button exit = new Button("Exit");
+		Button exit = new Button("Thoát khỏi");
 		exit.setPrefWidth(180);
 		exit.setOnAction(event -> exitApplication());
 

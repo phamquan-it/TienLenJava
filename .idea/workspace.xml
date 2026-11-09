@@ -4,11 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c02b32ab-6e7c-4f66-a0e7-04bce8273ebd" name="Changes" comment="" />
+    <list default="true" id="c02b32ab-6e7c-4f66-a0e7-04bce8273ebd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/javagame/GUI/StartGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/javagame/GUI/StartGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/GUI/CardGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/GUI/CardGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/GUI/CreateNewGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/GUI/CreateNewGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/GUI/GUIConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/GUI/GUIConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/GUI/InternalCardGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/GUI/InternalCardGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/GUI/StartGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/GUI/StartGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/NewGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/NewGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/SpringContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/SpringContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/entities/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/entities/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/entities/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/entities/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/entities/ListWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/entities/ListWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/entities/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/entities/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/javagame/repositories/DataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/javagame/repositories/DataRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controls/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controls/AppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controls/Design/StartDesign.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controls/Design/StartDesign.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controls/MainControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controls/MainControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controls/ValidData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controls/ValidData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -18,19 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Tienlen [clean,javafx:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Tienlen [mvn,clean,javafx:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/phamquan/Desktop/Tienlen&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Maven.Tienlen [clean,javafx:run].executor": "Run",
+    "Maven.Tienlen [mvn,clean,javafx:run].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "ghép-control-ai",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/phamquan/Desktop/Tienlen",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -66,7 +95,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
