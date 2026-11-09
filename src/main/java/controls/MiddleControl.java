@@ -26,9 +26,9 @@ public class MiddleControl implements SpringContext {
 	public MiddleControl() {
 		listPlayers = new ArrayList<Player>();
 		listPlayers.add(new Player(1, "Bạn"));
-		listPlayers.add(new Player(2, "Fun88 (AI)"));
-		listPlayers.add(new Player(3, "Fb88 (AI)"));
-		listPlayers.add(new Player(4, "M88 (AI)"));
+		listPlayers.add(new Player(2, "Con Lỗ Vốn"));
+		listPlayers.add(new Player(3, "Thằng Phế Vật"));
+		listPlayers.add(new Player(4, "Chị Hai Xui Xẻo"));
 		setSession(listPlayers);
 	}
 	public volatile TableGame tableGame;
