@@ -19,15 +19,17 @@ public class TableGame extends BorderPane{
 	public Label bottom;
 	public Label left;
 	public Label status;
+	public Button menu;
 	public TableGame(ListCardsChoose listCardsChoose) {
 		// nút Bỏ lượt dùng chung với nút trên ListCardsChoose
 		skip = listCardsChoose.skip;
 		BorderPane topPane = new BorderPane();
 		top = new Label("Top Player");
 		status = new Label("");
+		menu = new Button("Menu");
 		topPane.setLeft(top);
 		topPane.setCenter(status);
-		topPane.setRight(new Button("Menu"));
+		topPane.setRight(menu);
 		setTop(topPane);
 		right = new Label("Right Player");
 		setRight(right);

@@ -291,36 +291,72 @@ public class MiddleControl implements SpringContext {
 		return sb.toString();
 	}
 
-	public synchronized void showTablePlayer(Stage primaryStage) {
+	/**
+	 * Dựng bàn chơi cho người thật.
+	 *
+	 * @param primaryStage bàn chơi
+	 * @param onMenu       nút Menu: dọn thread/Timeline của ván rồi quay về màn start
+	 */
+	public synchronized void showTablePlayer(Stage primaryStage, Runnable onMenu) {
+		stopGameThreads();
 		currentListCard = new ArrayList<Card>();
 		startNewGame(true);
 		listCardsChoose = new ListCardsChoose(humanHand);
 		listCardsChoose.pushCard.setOnAction((e) -> playHuman());
 		listCardsChoose.skip.setOnAction((e) -> skipHuman());
 
-		Thread showTablePlayerThread = new Thread(() -> {
+		Thread worker = new Thread(() -> {
 			tableGame = new TableGame(listCardsChoose);
+			// nút Menu chỉ có tác dụng trong lúc đang chơi
+			tableGame.menu.setOnAction((e) -> {
+				stopGameThreads();
+				gameOver = true;
+				onMenu.run();
+			});
 			Scene scene = new Scene(tableGame, 800, 600);
 			Platform.runLater(() -> {
 				primaryStage.setScene(scene);
 				primaryStage.show();
 				tableGame.setListCardCenter(new ArrayList<>());
 			});
-			Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
+			gameClock = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
 				tableGame.setTextTop(getDeathTime());
 				tableGame.setStatus(getStatus());
 			}));
-			timeline.setCycleCount(Timeline.INDEFINITE);
-			timeline.play();
-			// bàn đã dựng xong -> nếu lượt đầu là AI thì cho AI đi
-			Platform.runLater(this::aiLoop);
+			gameClock.setCycleCount(Timeline.INDEFINITE);
+			gameClock.play();
+			Platform.runLater(() -> {
+				countdownThread = startCountdown();
+				// bàn đã dựng xong -> nếu lượt đầu là AI thì cho AI đi
+				aiLoop();
+			});
 		});
-		showTablePlayerThread.start();
+		worker.setDaemon(true);
+		worker.start();
+		showTablePlayerThread = worker;
 	}
 
-	public synchronized void countDowndDeatime() {
+	private volatile Thread showTablePlayerThread;
+	private volatile Thread countdownThread;
+	private volatile Timeline gameClock;
+
+	/** Dừng mọi thứ đang chạy của ván hiện tại (nút Menu / ván mới / thoát). */
+	public synchronized void stopGameThreads() {
+		Timeline clock = gameClock;
+		if (clock != null)
+			clock.stop();
+		for (Thread t : new Thread[] { showTablePlayerThread, countdownThread }) {
+			if (t != null)
+				t.interrupt();
+		}
+		showTablePlayerThread = null;
+		countdownThread = null;
+		gameClock = null;
+	}
+
+	public synchronized Thread startCountdown() {
 		Thread coundDowndTime = new Thread(() -> {
-			while (deathTime > 0) {
+			while (deathTime > 0 && !Thread.currentThread().isInterrupted()) {
 				try {
 					deathTime--;
 					Thread.sleep(1000);
@@ -328,14 +364,17 @@ public class MiddleControl implements SpringContext {
 					return;
 				}
 			}
+			if (Thread.currentThread().isInterrupted() || gameOver)
+				return;
 			// Hết giờ -> người đang cầm lượt bị bỏ lượt tự động (chỉ khi không phải người thật)
-			if (!gameOver && getTurn() != HUMAN_ID) {
+			if (getTurn() != HUMAN_ID) {
 				aiTurn();
 			}
 			resetDeathTime();
 		});
 		coundDowndTime.setDaemon(true);
 		coundDowndTime.start();
+		return coundDowndTime;
 	}
 
 	public synchronized void setDeathTime() {

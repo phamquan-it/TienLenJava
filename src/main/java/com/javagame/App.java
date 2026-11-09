@@ -1,10 +1,11 @@
 package com.javagame;
 
-import com.javagame.entities.Card;
-import com.javagame.repositories.DataRepository;
+import java.io.InputStream;
 
-import controls.MiddleControl;
+import com.javagame.GUI.StartGUI;
+
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -12,31 +13,25 @@ import javafx.stage.Stage;
  *
  */
 public class App extends Application{
-	
+
 	public static void main(String[] args){
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		TableGame tableGame = new TableGame();
-//		StackPane gridPane = new StackPane();
-//		gridPane.getChildren().add(tableGame);
-//		Scene scene = new Scene(gridPane, 800, 600);
-//		primaryStage.setScene(scene);
-//		ClassLoader classLoader = getClass().getClassLoader();
-//		InputStream inputStream = classLoader.getResourceAsStream("icon.png");
-//		primaryStage.setOnCloseRequest(event -> {
-//            System.exit(0);
-//        });
-//
-//	    Image image = new Image(inputStream);
-//	    primaryStage.setTitle("NA88");
-//	    primaryStage.getIcons().add(image);
-//	    primaryStage.show();
-		MiddleControl middleControl = new MiddleControl();
-		middleControl.showTablePlayer(primaryStage);
-	
+		// icon + tiêu đề giữ như bản gốc
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream inputStream = classLoader.getResourceAsStream("icon.png");
+		if (inputStream != null)
+			primaryStage.getIcons().add(new Image(inputStream));
+		primaryStage.setTitle("NA88");
+		// đóng cửa sổ thì dọn thread/Timeline đang chạy
+		primaryStage.setOnCloseRequest(event -> {
+			javafx.application.Platform.exit();
+			System.exit(0);
+		});
+		new StartGUI().start(primaryStage);
 	}
 	
 }
