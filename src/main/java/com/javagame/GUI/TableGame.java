@@ -18,20 +18,22 @@ public class TableGame extends BorderPane{
 	public Label right;
 	public Label bottom;
 	public Label left;
+	public Label status;
 	public TableGame(ListCardsChoose listCardsChoose) {
-		skip = new Button("Bỏ  lượt");
+		// nút Bỏ lượt dùng chung với nút trên ListCardsChoose
+		skip = listCardsChoose.skip;
 		BorderPane topPane = new BorderPane();
 		top = new Label("Top Player");
+		status = new Label("");
 		topPane.setLeft(top);
+		topPane.setCenter(status);
 		topPane.setRight(new Button("Menu"));
 		setTop(topPane);
 		right = new Label("Right Player");
 		setRight(right);
 		BorderPane bottomPane = new BorderPane();
 		bottomPane.setTop(listCardsChoose);
-		bottomPane.setRight(skip);
 		bottom = new Label("Bottom Player");
-		bottomPane.setCenter(bottom);
 		setBottom(bottomPane);
 		setAlignment(bottom, Pos.CENTER);
 		left = new Label("Left Player");
@@ -41,6 +43,9 @@ public class TableGame extends BorderPane{
 	public void setTextTop(int second) {
 		top.setText(String.valueOf(second));
 	}
+	public void setStatus(String text) {
+		status.setText(text);
+	}
 	public void setListCardCenter(List<Card> listCard) {
 		setCenter(new ListCardCenter(listCard));
 	}
@@ -48,6 +53,9 @@ public class TableGame extends BorderPane{
 class ListCardCenter extends Group{
 	public ListCardCenter(List<Card> listCard) {
 		Collections.sort(listCard);
+		// bài trên bàn thường ít lá -> đặt giữa màn hình
+		int width = Math.min(130 + Math.max(0, listCard.size() - 1) * 30, 800);
+		setLayoutX((800 - width) / 2.0);
 		int translatex = 0;
 		// TODO Auto-generated constructor stub
 		for(Card card: listCard) {

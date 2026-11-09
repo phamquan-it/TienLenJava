@@ -13,14 +13,17 @@ import com.javagame.repositories.DataRepository;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 public class ListCardsChoose extends BorderPane implements SpringContext{
 	public List<Card> listCard;
 	public List<Card> cardsChoose;
 	public Button pushCard;
+	public Button skip;
 	public ListCardsChoose(List<Card>  listCardPlayer) {
 		cardsChoose  = new ArrayList<>();
-		//listCard = player.getListCards();
+		// listCard là chính list bài trên tay trong MiddleControl (cùng object),
+		// để ván sau chia lại vẫn hiển thị đúng mà không cần setListCards.
 		listCard = listCardPlayer;
 		updateCardChoose();
 		// TODO Auto-generated constructor stub
@@ -40,8 +43,9 @@ public class ListCardsChoose extends BorderPane implements SpringContext{
 //				}
 //			}
 //		});
+		skip = new Button("Bỏ lượt");
 		setMaxHeight(300);
-		setBottom(pushCard);
+		setBottom(new HBox(8, pushCard, skip));
 	}
 	public void updateCardChoose() {
 		Group group = new Group();
@@ -70,8 +74,10 @@ public class ListCardsChoose extends BorderPane implements SpringContext{
 		}
 		setCenter(group);
 	}
+	/** Ván mới: trỏ sang list bài mới trên tay rồi vẽ lại. */
 	public void setListCards(List<Card> listCards) {
 		listCard = listCards;
+		cardsChoose.clear();
 		updateCardChoose();
 	}
 	public List<Card> getListCards(){
