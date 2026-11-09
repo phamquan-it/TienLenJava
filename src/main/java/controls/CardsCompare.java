@@ -110,6 +110,74 @@ public class CardsCompare implements SpringContext{
 			return true;
 		return false;
 	}
+	/** Tứ quý: 4 lá cùng số. */
+	public boolean isFourOfAKind(List<Card> cards) {
+		return cardsValid.isFourCards(cards);
+	}
+	/**
+	 * Ba đôi thông: đúng 3 đôi liên tiếp (6 lá, 3 cặp số liền kề).
+	 * Tách riêng khỏi isDoubleChainCard vì hàm đó nhận cả 4-5 đôi thông.
+	 */
+	public boolean isThreePairsInARow(List<Card> cards) {
+		return cards.size() == 6
+				&& cardsValid.isDoubleChainCard(cards);
+	}
+	/**
+	 * So hai tứ quý với nhau: tứ quý có số lớn hơn thắng.
+	 * Dùng lại cardDataSupport.getMaxCard như các hàm compare khác.
+	 */
+	public boolean fourOfAKindBeats(List<Card> currentCardsPlayer, List<Card> oldCardsPlayer) {
+		if (!isFourOfAKind(currentCardsPlayer) || !isFourOfAKind(oldCardsPlayer))
+			return false;
+		return singleCardCompare(
+				Arrays.asList(cardDataSupport.getMaxCard(currentCardsPlayer)),
+				Arrays.asList(cardDataSupport.getMaxCard(oldCardsPlayer)));
+	}
+	/** So hai ba đôi thông: so đôi cao nhất. */
+	public boolean threePairsInARowBeats(List<Card> currentCardsPlayer, List<Card> oldCardsPlayer) {
+		if (!isThreePairsInARow(currentCardsPlayer) || !isThreePairsInARow(oldCardsPlayer))
+			return false;
+		return singleCardCompare(
+				Arrays.asList(cardDataSupport.getMaxCard(currentCardsPlayer)),
+				Arrays.asList(cardDataSupport.getMaxCard(oldCardsPlayer)));
+	}
+	/**
+	 * Một bộ có được phép đè lên bộ trên bàn hay không.
+	 * Gom toàn bộ luật chặt vào một chỗ để cả người chơi lẫn AI dùng chung.
+	 */
+	public boolean canBeat(List<Card> candidate, List<Card> onTable) {
+		if (onTable == null || onTable.isEmpty())
+			return true; // mở vòng mới, bộ nào hợp lệ cũng được
+		if (candidate == null || candidate.isEmpty())
+			return false;
+		boolean four = isFourOfAKind(candidate);
+		boolean threePairs = isThreePairsInARow(candidate);
+		// Tứ quý chặt được: heo đơn, heo đôi, ba đôi thông, tứ quý nhỏ hơn
+		if (four) {
+			if (cardsValid.isSingleCard(onTable))
+				return onTable.getFirst().getId() == 15;
+			if (cardsValid.isDoubleCards(onTable))
+				return onTable.getFirst().getId() == 15;
+			if (isThreePairsInARow(onTable))
+				return true;
+			if (isFourOfAKind(onTable))
+				return fourOfAKindBeats(candidate, onTable);
+			return false;
+		}
+		// Ba đôi thông chặt được: heo đơn, ba đôi thông nhỏ hơn
+		if (threePairs) {
+			if (cardsValid.isSingleCard(onTable))
+				return onTable.getFirst().getId() == 15;
+			if (isThreePairsInARow(onTable))
+				return threePairsInARowBeats(candidate, onTable);
+			return false;
+		}
+		// Còn lại: bộ cùng loại, cùng số lá mới so sánh được
+		if (candidate.size() != onTable.size())
+			return false;
+		return getResultCompare(candidate, onTable);
+	}
+
 	public boolean isUntilmatePower(List<Card> currentCardsPlayer, List<Card> oldCardsPlayer) {
 		//Chặn tứ quý
 		if(cardsValid.isFourCards(oldCardsPlayer)

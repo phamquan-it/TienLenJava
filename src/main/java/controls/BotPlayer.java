@@ -40,7 +40,12 @@ public class BotPlayer implements SpringContext {
 
 	/** Duyệt từ bộ nhỏ nhất, trả về bộ đầu tiên đè được bài trên bàn. */
 	private List<Card> findSmallestBeating(List<Card> sorted, List<Card> onTable) {
-		// Lá đơn: chỉ cần tìm 1 lá lớn hơn lá trên bàn
+		// 1. Chặt trước nếu trên bàn là heo / tứ quý / ba đôi thông.
+		List<Card> chop = findSmallestChop(sorted, onTable);
+		if (!chop.isEmpty())
+			return chop;
+
+		// 2. Lá đơn: chỉ cần tìm 1 lá lớn hơn lá trên bàn
 		if (cardsValid.isSingleCard(onTable)) {
 			Card target = cardDataSupport.getMaxCard(onTable);
 			for (Card card : sorted) {
@@ -67,6 +72,41 @@ public class BotPlayer implements SpringContext {
 						|| cardsCompare.isUntilmatePower(candidate, onTable))
 					return candidate;
 			}
+		}
+		return new ArrayList<>();
+	}
+
+	/**
+	 * Chặt heo / tứ quý / ba đôi thông.
+	 * Tìm tứ quý nhỏ nhất trước (rẻ hơn), rồi mới tới ba đôi thông nhỏ nhất.
+	 */
+	private List<Card> findSmallestChop(List<Card> sorted, List<Card> onTable) {
+		List<Card> four = findSmallestFour(sorted, onTable);
+		if (!four.isEmpty())
+			return four;
+		return findSmallestThreePairs(sorted, onTable);
+	}
+
+	/** Tứ quý nhỏ nhất có thể dùng để chặt bài trên bàn. */
+	private List<Card> findSmallestFour(List<Card> sorted, List<Card> onTable) {
+		for (int start = 0; start + 4 <= sorted.size(); start++) {
+			List<Card> candidate = new ArrayList<>(sorted.subList(start, start + 4));
+			if (!cardsCompare.isFourOfAKind(candidate))
+				continue;
+			if (cardsCompare.canBeat(candidate, onTable))
+				return candidate;
+		}
+		return new ArrayList<>();
+	}
+
+	/** Ba đôi thông nhỏ nhất có thể dùng để chặt bài trên bàn. */
+	private List<Card> findSmallestThreePairs(List<Card> sorted, List<Card> onTable) {
+		for (int start = 0; start + 6 <= sorted.size(); start++) {
+			List<Card> candidate = new ArrayList<>(sorted.subList(start, start + 6));
+			if (!cardsCompare.isThreePairsInARow(candidate))
+				continue;
+			if (cardsCompare.canBeat(candidate, onTable))
+				return candidate;
 		}
 		return new ArrayList<>();
 	}

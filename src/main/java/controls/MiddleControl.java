@@ -163,19 +163,8 @@ public class MiddleControl implements SpringContext {
 	private boolean isLegalPlay(List<Card> chosen) {
 		if (lookUpData.getCardType(chosen) == -1)
 			return false;
-		if (tableCards.isEmpty())
-			return true;
-		if (chosen.size() != tableCards.size()) {
-			// chặt heo đơn bằng tứ quý / 3 đôi thông (số lá khác nhau)
-			return cardsValid.isFourCards(chosen)
-					|| cardsCompare.isMinimumPower(chosen, tableCards)
-					|| cardsCompare.isMediumPower(chosen, tableCards)
-					|| cardsCompare.isUntilmatePower(chosen, tableCards);
-		}
-		return cardsCompare.getResultCompare(chosen, tableCards)
-				|| cardsCompare.isMinimumPower(chosen, tableCards)
-				|| cardsCompare.isMediumPower(chosen, tableCards)
-				|| cardsCompare.isUntilmatePower(chosen, tableCards);
+		// canBeat gom toàn bộ luật chặt (tứ quý, 3 đôi thông, heo) và so bộ thường
+		return cardsCompare.canBeat(chosen, tableCards);
 	}
 
 	/** Ghi nhận lượt đánh và kiểm tra thắng / kết thúc vòng. */
